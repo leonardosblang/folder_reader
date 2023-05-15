@@ -74,6 +74,10 @@ class FolderReader(QDialog):
         for entry in os.scandir(folder_path):
             if entry.name == '.git':
                 continue
+            if entry.name == 'venv':
+                continue
+            if entry.name == '.idea':
+                continue
             if entry.is_file():
                 if entry.path in selected_paths or selected:
                     output += f"{indent} -{entry.name}\n"
